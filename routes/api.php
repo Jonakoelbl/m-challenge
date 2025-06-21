@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GiftCardRedemptionController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -9,3 +10,4 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::apiResource('user', UserController::class);
+Route::apiResource('order',GiftCardRedemptionController::class);
