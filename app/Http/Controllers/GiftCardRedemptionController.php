@@ -32,7 +32,7 @@ class GiftCardRedemptionController extends Controller
     public function show($id)
     {
         $order = GiftCardRedemption::query()->findOrFail($id);
-        return response()->json(['order' => $order], Response::HTTP_OK);
+        return response()->json(['order' => $order]);
     }
 
     /**
@@ -41,7 +41,7 @@ class GiftCardRedemptionController extends Controller
     public function update(GiftCardRedemptionRequest $request, $id)
     {
         $updatedOrder = GiftCardRedemption::query()->findOrFail($id)->update($request->all());
-        return response()->json($updatedOrder, Response::HTTP_OK);
+        return response()->json($updatedOrder);
     }
 
     /**
@@ -50,6 +50,6 @@ class GiftCardRedemptionController extends Controller
     public function destroy($id)
     {
         GiftcardRedemption::query()->findOrFail($id)->delete();
-        return response()->json(['message' => 'Gift card redemption has been removed'], Response::HTTP_OK);
+        return response()->json(['message' => 'Gift card redemption has been removed']);
     }
 }
