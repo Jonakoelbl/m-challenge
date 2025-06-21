@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('gift_card_redemptions', function (Blueprint $table) {
-            $table->id();
+            $table->id()->autoIncrement();
             $table->timestamps();
             $table->unsignedInteger('local_currency_cost');
             $table->unsignedInteger('local_currency_price');

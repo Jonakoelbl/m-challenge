@@ -17,4 +17,9 @@ class Company extends Model
     public function employees() {
         return $this->hasMany(Employee::class);
     }
+
+    public function getEmployeeByFirstName($name)
+    {
+        return $this->employees()->where('employees.first_name', '=', $name)->firstOrFail();
+    }
 }
