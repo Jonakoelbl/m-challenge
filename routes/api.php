@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BenefitController;
+use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\GiftCardRedemptionController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VariationController;
@@ -15,3 +16,6 @@ Route::apiResource('user', UserController::class);
 Route::apiResource('order',GiftCardRedemptionController::class);
 Route::apiResource('variation',VariationController::class);
 Route::apiResource('benefit',BenefitController::class);
+Route::apiResource('company',CompanyController::class);
+//Route::get('company/billing-last-week', [CompanyController::class, 'getBillingByCompany']);
+//Route::get('company/{company}/consumption-last-week', [CompanyController::class, 'getConsumptionLastWeek']);
