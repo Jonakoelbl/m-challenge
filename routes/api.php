@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BenefitController;
 use App\Http\Controllers\GiftCardRedemptionController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VariationController;
@@ -13,3 +14,4 @@ Route::get('/user', function (Request $request) {
 Route::apiResource('user', UserController::class);
 Route::apiResource('order',GiftCardRedemptionController::class);
 Route::apiResource('variation',VariationController::class);
+Route::apiResource('benefit',BenefitController::class);
