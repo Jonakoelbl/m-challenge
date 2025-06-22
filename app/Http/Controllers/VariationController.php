@@ -13,8 +13,8 @@ class VariationController extends Controller
      */
     public function index()
     {
-        $variations = Variation::query()->paginate(10);
-        return response()->json(['variations' => $variations]);
+        $variations = Variation::paginate(10);
+        return response()->json($variations);
     }
 
     /**
@@ -22,34 +22,33 @@ class VariationController extends Controller
      */
     public function store(VariationRequest $request)
     {
-        $variation = Variation::query()->create($request->all());
-        return response()->json(['variation' => $variation], Response::HTTP_CREATED);
+        $variation = Variation::create($request->validated());
+        return response()->json($variation, Response::HTTP_CREATED);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show(Variation $variation)
     {
-        $variation = Variation::query()->findOrFail($id);
-        return response()->json(['variation' => $variation]);
+        return response()->json($variation);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(VariationRequest $request, $id)
+    public function update(VariationRequest $request, Variation $variation)
     {
-        $variation = Variation::query()->findOrFail($id)->update($request->all());
-        return response()->json(['variation' => $variation]);
+        $variation->update($request->validated());
+        return response()->json($variation);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)
+    public function destroy(Variation $variation)
     {
-        Variation::query()->findOrFail($id)->delete();
+        $variation->delete();
         return response()->json(['message' => 'Variation has been removed']);
     }
 }

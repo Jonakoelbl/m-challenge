@@ -13,8 +13,8 @@ class GiftCardRedemptionController extends Controller
      */
     public function index()
     {
-        $orders = GiftCardRedemption::query()->paginate(10);
-        return response()->json(['orders' => $orders], Response::HTTP_CREATED);
+        $orders = GiftCardRedemption::paginate(10);
+        return response()->json($orders);
     }
 
     /**
@@ -22,34 +22,33 @@ class GiftCardRedemptionController extends Controller
      */
     public function store(GiftCardRedemptionRequest $request)
     {
-        $newOrder = GiftCardRedemption::query()->created($request->all());
+        $newOrder = GiftCardRedemption::create($request->validated());
         return response()->json($newOrder, Response::HTTP_CREATED);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show(GiftCardRedemption $order)
     {
-        $order = GiftCardRedemption::query()->findOrFail($id);
-        return response()->json(['order' => $order]);
+        return response()->json($order);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(GiftCardRedemptionRequest $request, $id)
+    public function update(GiftCardRedemptionRequest $request, GiftCardRedemption $order)
     {
-        $updatedOrder = GiftCardRedemption::query()->findOrFail($id)->update($request->all());
-        return response()->json($updatedOrder);
+        $order->update($request->all());
+        return response()->json($order);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)
+    public function destroy(GiftCardRedemption $order)
     {
-        GiftcardRedemption::query()->findOrFail($id)->delete();
+        $order->delete();
         return response()->json(['message' => 'Gift card redemption has been removed']);
     }
 }
