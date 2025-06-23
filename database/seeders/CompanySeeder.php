@@ -13,7 +13,7 @@ class CompanySeeder extends Seeder
     public function run(): void
     {
         $companiesData = [
-            ['legal_name' => 'Maslow', 'billing_address' => 'Calle Falsa 123'],
+            ['legal_name' => 'Mercado Libre', 'billing_address' => 'Calle Falsa 123'],
             ['legal_name' => 'Santander', 'billing_address' => 'Address Somewhere'],
             ['legal_name' => 'BBVA', 'billing_address' => 'Address IdunnoKnow'],
         ];
