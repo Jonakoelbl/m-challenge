@@ -23,11 +23,18 @@ class UserSeeder extends Seeder
             'role' => Roles::MASLOW_ADMIN->value,
         ]);
 
+        User::create([
+            'name' => 'Compay Administrator',
+            'email' => 'company_admin@test.com',
+            'password' => Hash::make('company'),
+            'role' => Roles::COMPANY_ADMIN->value,
+        ]);
+
         $companies = Company::all();
         foreach ($companies as $company) {
             User::create([
                 'name' => $company->legal_name. ' Administrator',
-                'email' => $company->legal_name.'_admin@test.com',
+                'email' => str($company->legal_name)->slug('_').'_admin@test.com',
                 'password' => Hash::make('company'),
                 'role' => Roles::COMPANY_ADMIN->value,
             ]);
