@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
         User::create([
             'name' => 'Maslow Administrator',
             'email' => 'maslow_admin@test.com',
-            'password' => Hash::make('password'),
+            'password' => Hash::make('admin'),
             'role' => Roles::MASLOW_ADMIN->value,
         ]);
 
@@ -28,7 +28,7 @@ class UserSeeder extends Seeder
             User::create([
                 'name' => $company->legal_name. ' Administrator',
                 'email' => $company->legal_name.'_admin@test.com',
-                'password' => Hash::make('password'),
+                'password' => Hash::make('company'),
                 'role' => Roles::COMPANY_ADMIN->value,
             ]);
         }
@@ -37,8 +37,8 @@ class UserSeeder extends Seeder
             User::create([
                 'name' => 'Company Employee ' . $i,
                 'email' => 'company_employee' . $i . '@test.com',
-                'password' => Hash::make('rootroot'),
-                'role' => 'company_employee',
+                'password' => Hash::make('employee'),
+                'role' => Roles::COMPANY_EMPLOYEE->value,
             ]);
         }
     }
